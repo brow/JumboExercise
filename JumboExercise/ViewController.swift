@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class ViewController: UIViewController {
     override init(
@@ -16,6 +17,31 @@ class ViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         view.backgroundColor = .systemBackground
+        
+        let webView = WKWebView(
+            frame: .zero,
+            configuration: {
+                class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
+                    func userContentController(
+                        _ userContentController: WKUserContentController,
+                        didReceive message: WKScriptMessage)
+                    {
+                        print(message)
+                    }
+                }
+                
+                let userContentController = WKUserContentController()
+                userContentController.add(ScriptMessageHandler(), name: "jumbo")
+                
+                let configuration = WKWebViewConfiguration()
+                configuration.userContentController = userContentController
+                return configuration
+            }())
+        view.addSubview(webView)
+        
+        webView.loadHTMLString(
+            "<script>window.webkit.messageHandlers.jumbo.postMessage(\"testing\")</script>",
+            baseURL: nil)
     }
     
     required init?(coder: NSCoder) {
