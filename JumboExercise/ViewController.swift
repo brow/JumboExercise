@@ -26,12 +26,16 @@ class ViewController: UIViewController {
                         _ userContentController: WKUserContentController,
                         didReceive message: WKScriptMessage)
                     {
-                        print(message)
+                        print(message.body)
                     }
                 }
                 
                 let userContentController = WKUserContentController()
                 userContentController.add(ScriptMessageHandler(), name: "jumbo")
+                userContentController.addUserScript(WKUserScript(
+                    source: "startOperation(\"testing\");",
+                    injectionTime: .atDocumentEnd,
+                    forMainFrameOnly: false))
                 
                 let configuration = WKWebViewConfiguration()
                 configuration.userContentController = userContentController
@@ -40,7 +44,7 @@ class ViewController: UIViewController {
         view.addSubview(webView)
         
         webView.loadHTMLString(
-            "<script>window.webkit.messageHandlers.jumbo.postMessage(\"testing\")</script>",
+            "<script src=\"https://jumboassetsv1.blob.core.windows.net/publicfiles/interview_bundle.js\"></script>",
             baseURL: nil)
     }
     
