@@ -54,12 +54,12 @@
 		EA5F77F323AD6111001E842A /* JumboExercise */ = {
 			isa = PBXGroup;
 			children = (
+				EA5F780223AD6112001E842A /* Info.plist */,
 				EA5F77F423AD6111001E842A /* AppDelegate.swift */,
-				EA5F77F823AD6111001E842A /* ViewController.swift */,
 				EA5F780823AD8FFA001E842A /* Message.swift */,
 				EA5F780A23AD91BD001E842A /* MessageDecoding.swift */,
+				EA5F77F823AD6111001E842A /* ViewController.swift */,
 				EA5F77FF23AD6112001E842A /* LaunchScreen.storyboard */,
-				EA5F780223AD6112001E842A /* Info.plist */,
 			);
 			path = JumboExercise;
 			sourceTree = "<group>";
