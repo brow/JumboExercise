@@ -34,7 +34,7 @@ extension Message: Decodable {
             let message = try container.decode(String.self, forKey: CodingKeys.message)
             switch message {
             case "progress":
-                return .progress(
+                return .inProgress(
                     try container.decode(Double.self, forKey: .progress))
             case "completed":
                 return .completed(
