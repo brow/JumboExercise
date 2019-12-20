@@ -20,13 +20,17 @@ class ViewController: UIViewController {
         
         let webView = WKWebView(
             frame: .zero,
-            configuration: {
+            configuration: {                
                 class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
                     func userContentController(
                         _ userContentController: WKUserContentController,
                         didReceive message: WKScriptMessage)
                     {
-                        print(message.body)
+                        do {
+                            print(try Message(message))
+                        } catch {
+                            print(error)
+                        }
                     }
                 }
                 

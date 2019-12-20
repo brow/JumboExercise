@@ -11,6 +11,8 @@
 		EA5F77F923AD6111001E842A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F77F823AD6111001E842A /* ViewController.swift */; };
 		EA5F77FE23AD6112001E842A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA5F77FD23AD6112001E842A /* Assets.xcassets */; };
 		EA5F780123AD6112001E842A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA5F77FF23AD6112001E842A /* LaunchScreen.storyboard */; };
+		EA5F780923AD8FFA001E842A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F780823AD8FFA001E842A /* Message.swift */; };
+		EA5F780B23AD91BD001E842A /* MessageDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F780A23AD91BD001E842A /* MessageDecoding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		EA5F77FD23AD6112001E842A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA5F780023AD6112001E842A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA5F780223AD6112001E842A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA5F780823AD8FFA001E842A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		EA5F780A23AD91BD001E842A /* MessageDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDecoding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			children = (
 				EA5F77F423AD6111001E842A /* AppDelegate.swift */,
 				EA5F77F823AD6111001E842A /* ViewController.swift */,
+				EA5F780823AD8FFA001E842A /* Message.swift */,
+				EA5F780A23AD91BD001E842A /* MessageDecoding.swift */,
 				EA5F77FD23AD6112001E842A /* Assets.xcassets */,
 				EA5F77FF23AD6112001E842A /* LaunchScreen.storyboard */,
 				EA5F780223AD6112001E842A /* Info.plist */,
@@ -131,7 +137,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA5F780923AD8FFA001E842A /* Message.swift in Sources */,
 				EA5F77F923AD6111001E842A /* ViewController.swift in Sources */,
+				EA5F780B23AD91BD001E842A /* MessageDecoding.swift in Sources */,
 				EA5F77F523AD6111001E842A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
