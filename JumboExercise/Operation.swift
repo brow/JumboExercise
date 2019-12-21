@@ -1,5 +1,5 @@
 //
-//  Operations.swift
+//  Operation.swift
 //  JumboExercise
 //
 //  Created by Tom Brow on 12/20/19.
