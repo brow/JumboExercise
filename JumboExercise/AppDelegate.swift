@@ -11,7 +11,9 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    private let operationRunner = OperationRunner(operationIDs: ["a", "b"])
+    private let operationRunner = OperationRunner(
+        operationIDs: ["a", "b"],
+        didReceiveMessage: { print($0) })
     
     // MARK: UIApplicationDelegate
     

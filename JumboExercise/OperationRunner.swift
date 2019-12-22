@@ -11,25 +11,17 @@ import WebKit
 struct OperationRunner {
     private let webView: WKWebView
     
-    init(operationIDs: [Operation.ID]) {
+    init(
+        operationIDs: [Operation.ID],
+        didReceiveMessage: @escaping (Result<Message, Error>) -> ())
+    {
         webView = WKWebView(
             frame: .zero,
             configuration: {
-                class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
-                    func userContentController(
-                        _ userContentController: WKUserContentController,
-                        didReceive message: WKScriptMessage)
-                    {
-                        do {
-                            print(try Message(message))
-                        } catch {
-                            print(error)
-                        }
-                    }
-                }
-                
                 let userContentController = WKUserContentController()
-                userContentController.add(ScriptMessageHandler(), name: "jumbo")
+                userContentController.add(
+                    ScriptMessageHandler(didReceiveMessage: didReceiveMessage),
+                    name: "jumbo")
                 userContentController.addUserScript(WKUserScript(
                     source: operationIDs
                         .map { $0.replacingOccurrences(of: "\"", with: "\\\"") }
@@ -45,5 +37,26 @@ struct OperationRunner {
         webView.loadHTMLString(
             "<script src=\"https://jumboassetsv1.blob.core.windows.net/publicfiles/interview_bundle.js\"></script>",
             baseURL: nil)
+    }
+}
+
+private class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
+    private let didReceiveMessage: (Result<Message, Error>) -> ()
+    
+    init(didReceiveMessage: @escaping (Result<Message, Error>) -> ()) {
+        self.didReceiveMessage = didReceiveMessage
+    }
+    
+    func userContentController(
+        _ userContentController: WKUserContentController,
+        didReceive message: WKScriptMessage)
+    {
+        didReceiveMessage({
+            do {
+                return .success(try Message(message))
+            } catch {
+                return .failure(error)
+            }
+        }())
     }
 }
