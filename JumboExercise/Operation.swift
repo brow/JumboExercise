@@ -7,7 +7,7 @@
 //
 
 struct Operation {
-    typealias Id = String
+    typealias ID = String
     
     enum State {
         case inProgress(Double)

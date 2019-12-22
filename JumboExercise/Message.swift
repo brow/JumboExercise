@@ -7,6 +7,6 @@
 //
 
 struct Message {
-    let id: Operation.Id
+    let id: Operation.ID
     let content: Operation.State
 }
