@@ -11,7 +11,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    private let operationRunner = OperationRunner()
+    private let operationRunner = OperationRunner(operationIds: ["a", "b"])
     
     // MARK: UIApplicationDelegate
     

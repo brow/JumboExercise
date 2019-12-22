@@ -11,7 +11,7 @@ import WebKit
 struct OperationRunner {
     private let webView: WKWebView
     
-    init() {
+    init(operationIds: [Operation.Id]) {
         webView = WKWebView(
             frame: .zero,
             configuration: {
@@ -31,7 +31,10 @@ struct OperationRunner {
                 let userContentController = WKUserContentController()
                 userContentController.add(ScriptMessageHandler(), name: "jumbo")
                 userContentController.addUserScript(WKUserScript(
-                    source: "startOperation(\"testing\");",
+                    source: operationIds
+                        .map { $0.replacingOccurrences(of: "\"", with: "\\\"") }
+                        .map { "startOperation(\"\($0)\")" }
+                        .joined(separator: ";"),
                     injectionTime: .atDocumentEnd,
                     forMainFrameOnly: false))
                 
