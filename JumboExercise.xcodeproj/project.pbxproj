@@ -13,6 +13,7 @@
 		EA5F780923AD8FFA001E842A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F780823AD8FFA001E842A /* Message.swift */; };
 		EA5F780B23AD91BD001E842A /* MessageDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F780A23AD91BD001E842A /* MessageDecoding.swift */; };
 		EA5F781123AD9662001E842A /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F781023AD9662001E842A /* Operation.swift */; };
+		EA7FED5C23B0277800018D0F /* OperationRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FED5B23B0277800018D0F /* OperationRunner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		EA5F780823AD8FFA001E842A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA5F780A23AD91BD001E842A /* MessageDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDecoding.swift; sourceTree = "<group>"; };
 		EA5F781023AD9662001E842A /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		EA7FED5B23B0277800018D0F /* OperationRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationRunner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				EA5F780823AD8FFA001E842A /* Message.swift */,
 				EA5F780A23AD91BD001E842A /* MessageDecoding.swift */,
 				EA5F781023AD9662001E842A /* Operation.swift */,
+				EA7FED5B23B0277800018D0F /* OperationRunner.swift */,
 				EA5F77F823AD6111001E842A /* ViewController.swift */,
 				EA5F77FF23AD6112001E842A /* LaunchScreen.storyboard */,
 			);
@@ -141,6 +144,7 @@
 				EA5F780B23AD91BD001E842A /* MessageDecoding.swift in Sources */,
 				EA5F781123AD9662001E842A /* Operation.swift in Sources */,
 				EA5F77F523AD6111001E842A /* AppDelegate.swift in Sources */,
+				EA7FED5C23B0277800018D0F /* OperationRunner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import WebKit
 
 class ViewController: UIViewController {
     override init(
@@ -17,39 +16,6 @@ class ViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         view.backgroundColor = .systemBackground
-        
-        let webView = WKWebView(
-            frame: .zero,
-            configuration: {                
-                class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
-                    func userContentController(
-                        _ userContentController: WKUserContentController,
-                        didReceive message: WKScriptMessage)
-                    {
-                        do {
-                            print(try Message(message))
-                        } catch {
-                            print(error)
-                        }
-                    }
-                }
-                
-                let userContentController = WKUserContentController()
-                userContentController.add(ScriptMessageHandler(), name: "jumbo")
-                userContentController.addUserScript(WKUserScript(
-                    source: "startOperation(\"testing\");",
-                    injectionTime: .atDocumentEnd,
-                    forMainFrameOnly: false))
-                
-                let configuration = WKWebViewConfiguration()
-                configuration.userContentController = userContentController
-                return configuration
-            }())
-        view.addSubview(webView)
-        
-        webView.loadHTMLString(
-            "<script src=\"https://jumboassetsv1.blob.core.windows.net/publicfiles/interview_bundle.js\"></script>",
-            baseURL: nil)
     }
     
     required init?(coder: NSCoder) {

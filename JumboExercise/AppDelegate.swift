@@ -11,6 +11,10 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    private let operationRunner = OperationRunner()
+    
+    // MARK: UIApplicationDelegate
+    
     var window: UIWindow?
     
     func application(
