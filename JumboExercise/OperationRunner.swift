@@ -36,7 +36,7 @@ struct OperationRunner {
                         .map { "startOperation(\"\($0)\")" }
                         .joined(separator: ";"),
                     injectionTime: .atDocumentEnd,
-                    forMainFrameOnly: false))
+                    forMainFrameOnly: true))
                 
                 let configuration = WKWebViewConfiguration()
                 configuration.userContentController = userContentController
