@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		EA1F6FA923B11C300041D823 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F6FA823B11C300041D823 /* State.swift */; };
 		EA1F6FAB23B138F80041D823 /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F6FAA23B138F80041D823 /* ProgressCell.swift */; };
-		EA1F6FB323B185E00041D823 /* JumboExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F6FB223B185E00041D823 /* JumboExerciseTests.swift */; };
+		EA1F6FB323B185E00041D823 /* StringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F6FB223B185E00041D823 /* StringExtensionsTests.swift */; };
 		EA1F6FBB23B1861B0041D823 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F6FBA23B1861B0041D823 /* StringExtensions.swift */; };
 		EA5F77F523AD6111001E842A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F77F423AD6111001E842A /* AppDelegate.swift */; };
 		EA5F77F923AD6111001E842A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F77F823AD6111001E842A /* ViewController.swift */; };
@@ -34,7 +34,7 @@
 		EA1F6FA823B11C300041D823 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		EA1F6FAA23B138F80041D823 /* ProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		EA1F6FB023B185E00041D823 /* JumboExerciseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JumboExerciseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA1F6FB223B185E00041D823 /* JumboExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumboExerciseTests.swift; sourceTree = "<group>"; };
+		EA1F6FB223B185E00041D823 /* StringExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsTests.swift; sourceTree = "<group>"; };
 		EA1F6FB423B185E00041D823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA1F6FBA23B1861B0041D823 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		EA5F77F123AD6111001E842A /* JumboExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumboExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,7 +69,7 @@
 		EA1F6FB123B185E00041D823 /* JumboExerciseTests */ = {
 			isa = PBXGroup;
 			children = (
-				EA1F6FB223B185E00041D823 /* JumboExerciseTests.swift */,
+				EA1F6FB223B185E00041D823 /* StringExtensionsTests.swift */,
 				EA1F6FB423B185E00041D823 /* Info.plist */,
 			);
 			path = JumboExerciseTests;
@@ -210,7 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA1F6FB323B185E00041D823 /* JumboExerciseTests.swift in Sources */,
+				EA1F6FB323B185E00041D823 /* StringExtensionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

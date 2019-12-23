@@ -1,6 +1,6 @@
 //
-//  JumboExerciseTests.swift
-//  JumboExerciseTests
+//  StringExtensionsTests.swift
+//  StringExtensionsTests
 //
 //  Created by Tom Brow on 12/23/19.
 //  Copyright © 2019 Tom Brow. All rights reserved.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import JumboExercise
 
-class JumboExerciseTests: XCTestCase {
+class StringExtensionsTests: XCTestCase {
     func testStringEscapingForDoubleQuoting() {
         XCTAssertEqual(
             "jumbo".escapingForDoubleQuoting,
