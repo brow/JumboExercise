@@ -8,17 +8,44 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    override init(
-        nibName nibNameOrNil: String?,
-        bundle nibBundleOrNil: Bundle?)
-    {
-        super.init(nibName: nil, bundle: nil)
+class ViewController: UITableViewController {
+    private var rows: [(Operation.ID, Operation.State)]
+    
+    init(rows: [(Operation.ID, Operation.State)]) {
+        self.rows = rows
         
-        view.backgroundColor = .systemBackground
+        super.init(style: .plain)
+        
+        tableView.register(
+            UITableViewCell.self,
+            forCellReuseIdentifier: cellReuseIdentifier)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: UITableViewDataSource
+    
+    override func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int)
+        -> Int
+    {
+        return rows.count
+    }
+    
+    override func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: cellReuseIdentifier,
+            for: indexPath)
+        cell.textLabel?.text = rows[indexPath.row].0
+        return cell
+    }
 }
+
+private let cellReuseIdentifier = "Cell"

@@ -25,8 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let operationIDs = ["a", "b"]
         var state = State(operationIDs: operationIDs)
         
-        let viewController = ViewController(
-        )
+        let viewController = ViewController(rows: state.orderedOperations)
         
         operationRunner = OperationRunner(
             operationIDs: operationIDs,
