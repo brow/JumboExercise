@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var state = State(operationIDs: operationIDs)
         let viewController = ViewController(rows: state.orderedOperations)
         
-        func didReceiveMessage(_ message: Result<Message, Error>) {
+        func handleEvent(_ message: Result<Message, Error>) {
             switch message {
             case .success(let message):
                 state.updateWith(message)
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .failure(let error):
                 // TODO: A message serialization issue could cause errors
                 // to pile up rapidly. A UI that handles that gracefully
-                // would be better than alert views.
+                // would be better than these alert views.
                 viewController.present(
                     UIAlertController(error: error),
                     animated: true,
@@ -55,13 +55,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             else {
                                 struct ResponseBodyError: Error {}
                                 throw ResponseBodyError()
-                        }
+                            }
                         self?.operationRunner = OperationRunner(
                             runnerScript: bodyString,
                             operationIDs: operationIDs,
-                            handleEvent: didReceiveMessage)
+                            handleEvent: handleEvent)
                     } catch {
-                        didReceiveMessage(.failure(error))
+                        handleEvent(.failure(error))
                     }
                 }
             }
