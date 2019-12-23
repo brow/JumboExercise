@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 throw ResponseBodyError()
                         }
                         self?.operationRunner = OperationRunner(
-                            script: bodyString,
+                            runnerScript: bodyString,
                             operationIDs: operationIDs,
                             handleEvent: didReceiveMessage)
                     } catch {

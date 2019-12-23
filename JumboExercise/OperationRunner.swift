@@ -12,7 +12,7 @@ struct OperationRunner {
     private let webView: WKWebView
     
     init(
-        script: String,
+        runnerScript: String,
         operationIDs: [Operation.ID],
         handleEvent: @escaping (Result<Message, Error>) -> ())
     {
@@ -22,14 +22,15 @@ struct OperationRunner {
                 handleEvent: handleEvent,
                 handlerName: "jumbo"))
                 
-        webView.evaluateJavaScript(script) { [webView] _, error in
+        webView.evaluateJavaScript(runnerScript) { [webView] _, error in
             if let error = error {
                 handleEvent(.failure(error))
             } else {
+                let startOperationsScript = operationIDs
+                    .map { "startOperation(\"\($0.escapingQuotes)\")" }
+                    .joined(separator: ";")
                 webView.evaluateJavaScript(
-                    operationIDs
-                        .map { "startOperation(\"\($0.escapingQuotes)\")" }
-                        .joined(separator: ";"),
+                    startOperationsScript,
                     completionHandler: { _, error in
                         if let error = error {
                             handleEvent(.failure(error))
