@@ -69,36 +69,3 @@ class ViewController: UITableViewController {
 }
 
 private let cellReuseIdentifier = "Cell"
-
-class ProgressCell: UITableViewCell {
-    static let reuseIdentifier = "Cell"
-    
-    private let progressView: UIProgressView
-    
-    func setProgress(_ progress: Float?) {
-        if let progress = progress {
-            accessoryView = progressView
-            progressView.progress = progress
-        } else {
-            accessoryView = nil
-        }
-    }
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        progressView = UIProgressView(
-            frame: CGRect(
-                origin: .zero,
-                size: CGSize(
-                    width: 100,
-                    // Acutual height is determined by `.progressViewStyle`.
-                    height: 0)))
-        
-        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
-        
-        accessoryView = progressView
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}

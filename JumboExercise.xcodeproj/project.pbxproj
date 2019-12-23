@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EA1F6FA923B11C300041D823 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F6FA823B11C300041D823 /* State.swift */; };
+		EA1F6FAB23B138F80041D823 /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F6FAA23B138F80041D823 /* ProgressCell.swift */; };
 		EA5F77F523AD6111001E842A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F77F423AD6111001E842A /* AppDelegate.swift */; };
 		EA5F77F923AD6111001E842A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F77F823AD6111001E842A /* ViewController.swift */; };
 		EA5F780123AD6112001E842A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA5F77FF23AD6112001E842A /* LaunchScreen.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		EA1F6FA823B11C300041D823 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		EA1F6FAA23B138F80041D823 /* ProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		EA5F77F123AD6111001E842A /* JumboExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JumboExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5F77F423AD6111001E842A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA5F77F823AD6111001E842A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				EA5F780A23AD91BD001E842A /* MessageDecodable.swift */,
 				EA5F781023AD9662001E842A /* Operation.swift */,
 				EA7FED5B23B0277800018D0F /* OperationRunner.swift */,
+				EA1F6FAA23B138F80041D823 /* ProgressCell.swift */,
 				EA1F6FA823B11C300041D823 /* State.swift */,
 				EA5F77F823AD6111001E842A /* ViewController.swift */,
 				EA5F77FF23AD6112001E842A /* LaunchScreen.storyboard */,
@@ -144,6 +147,7 @@
 			files = (
 				EA5F780923AD8FFA001E842A /* Message.swift in Sources */,
 				EA5F77F923AD6111001E842A /* ViewController.swift in Sources */,
+				EA1F6FAB23B138F80041D823 /* ProgressCell.swift in Sources */,
 				EA5F780B23AD91BD001E842A /* MessageDecodable.swift in Sources */,
 				EA5F781123AD9662001E842A /* Operation.swift in Sources */,
 				EA5F77F523AD6111001E842A /* AppDelegate.swift in Sources */,
