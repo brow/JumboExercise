@@ -24,8 +24,7 @@ struct OperationRunner {
                     name: "jumbo")
                 userContentController.addUserScript(WKUserScript(
                     source: operationIDs
-                        .map { $0.replacingOccurrences(of: "\"", with: "\\\"") }
-                        .map { "startOperation(\"\($0)\")" }
+                        .map { "startOperation(\"\($0.escapingQuotes)\")" }
                         .joined(separator: ";"),
                     injectionTime: .atDocumentEnd,
                     forMainFrameOnly: true))
@@ -40,6 +39,12 @@ struct OperationRunner {
         webView.loadHTMLString(
             "<script src=\"https://jumboassetsv1.blob.core.windows.net/publicfiles/interview_bundle.js\"></script>",
             baseURL: nil)
+    }
+}
+
+private extension String {
+    var escapingQuotes: String {
+        return replacingOccurrences(of: "\"", with: "\\\"")
     }
 }
 
