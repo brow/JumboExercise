@@ -15,7 +15,7 @@ struct State {
         
         operations = [:]
         for id in operationIDs {
-            operations[id] = .inProgress(0)
+            operations[id] = .inProgress(progress: 0)
         }
     }
     

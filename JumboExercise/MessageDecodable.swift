@@ -13,14 +13,20 @@ extension Message: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         content = try {
-            let message = try container.decode(String.self, forKey: CodingKeys.message)
+            let message = try container.decode(
+                String.self,
+                forKey: CodingKeys.message)
             switch message {
             case "progress":
                 return .inProgress(
-                    try container.decode(Double.self, forKey: .progress))
+                    progress: try container.decode(
+                        Double.self,
+                        forKey: .progress))
             case "completed":
                 return .completed(
-                    state: try container.decode(String.self, forKey: .state))
+                    state: try container.decode(
+                        String.self,
+                        forKey: .state))
             default:
                 throw DecodingError.dataCorruptedError(
                     forKey: .message,

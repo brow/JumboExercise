@@ -10,9 +10,10 @@ struct Operation {
     typealias ID = String
     
     enum State {
-        case inProgress(Double)
+        case inProgress(progress: Double)
+        
+        // `state` might be, e.g., "completed" or "success", but the set of
+        // possible values is not documented.
         case completed(state: String)
     }
 }
-
-
