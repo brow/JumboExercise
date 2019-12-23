@@ -9,11 +9,11 @@
 import UIKit
 
 class ViewController: UITableViewController {
-    var rows: [(Operation.ID, Operation.State)] {
+    var rows: State {
         didSet { tableView.reloadData() }
     }
     
-    init(rows: [(Operation.ID, Operation.State)]) {
+    init(rows: State) {
         self.rows = rows
         
         super.init(style: .plain)
@@ -42,7 +42,7 @@ class ViewController: UITableViewController {
         cellForRowAt indexPath: IndexPath)
         -> UITableViewCell
     {
-        let model = rows[indexPath.row]
+        let model = rows.operationAtIndex(indexPath.row)
         let cell = tableView
             .dequeueReusableCell(
                 withIdentifier: ProgressCell.reuseIdentifier,

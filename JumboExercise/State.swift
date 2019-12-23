@@ -23,13 +23,12 @@ struct State {
         operations[message.id] = message.content
     }
     
-    var orderedOperations: [(Operation.ID, Operation.State)] {
-        return orderedOperationIDs.compactMap { id in
-            if let state = operations[id] {
-                return (id, state)
-            } else {
-                return nil
-            }
-        }
+    var count: Int {
+        return orderedOperationIDs.count
+    }
+    
+    func operationAtIndex(_ index: Int) -> (Operation.ID, Operation.State) {
+        let id = orderedOperationIDs[index]
+        return (id, operations[id]!)
     }
 }
