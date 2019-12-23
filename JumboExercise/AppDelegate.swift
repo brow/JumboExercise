@@ -39,10 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // to pile up rapidly. A UI that handles that gracefully
                     // would be better than alert views.
                     viewController.present(
-                        UIAlertController(
-                            title: "Error",
-                            message: error.localizedDescription,
-                            preferredStyle: .alert),
+                        UIAlertController(error: error),
                         animated: true,
                         completion: nil)
                     
@@ -57,4 +54,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+}
+
+private extension UIAlertController {
+    convenience init(error: Error) {
+        self.init(
+            title: "Error",
+            message: error.localizedDescription,
+            preferredStyle: .alert)
+        addAction(UIAlertAction(
+            title: "OK",
+            style: .cancel,
+            handler: nil))
+    }
 }
