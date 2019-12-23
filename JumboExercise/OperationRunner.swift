@@ -9,19 +9,17 @@
 import WebKit
 
 struct OperationRunner {
-    private let webView: WKWebView
+    private let webView = WKWebView()
     
     init(
         runnerScript: String,
         operationIDs: [Operation.ID],
         handleEvent: @escaping (Result<Message, Error>) -> ())
     {
-        webView = WKWebView(
-            frame: .zero,
-            configuration: WKWebViewConfiguration(
-                handleEvent: handleEvent,
-                handlerName: "jumbo"))
-                
+        webView.configuration.userContentController.add(
+            ScriptMessageHandler(handleEvent: handleEvent),
+            name: "jumbo")
+        
         webView.evaluateJavaScript(runnerScript) { [webView] _, error in
             if let error = error {
                 handleEvent(.failure(error))
@@ -44,17 +42,6 @@ struct OperationRunner {
 private extension String {
     var escapingQuotes: String {
         return replacingOccurrences(of: "\"", with: "\\\"")
-    }
-}
-
-private extension WKWebViewConfiguration {
-    convenience init(
-        handleEvent: @escaping (Result<Message, Error>) -> (),
-        handlerName: String) {
-        self.init()
-        userContentController.add(
-            ScriptMessageHandler(handleEvent: handleEvent),
-            name: handlerName)
     }
 }
 
