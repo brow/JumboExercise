@@ -48,13 +48,6 @@ class OperationRunner {
     }
 }
 
-private extension String {
-    var escapingForDoubleQuoting: String {
-        return replacingOccurrences(of: "\\", with: "\\\\")
-            .replacingOccurrences(of: "\"", with: "\\\"")
-    }
-}
-
 private class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
     private let handleEvent: (Result<Message, Error>) -> ()
     private let decoder = JSONDecoder()
