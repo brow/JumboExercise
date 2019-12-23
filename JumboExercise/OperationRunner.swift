@@ -12,6 +12,7 @@ struct OperationRunner {
     private let webView: WKWebView
     
     init(
+        script: String,
         operationIDs: [Operation.ID],
         didReceiveMessage: @escaping (Result<Message, Error>) -> ())
     {
@@ -33,12 +34,22 @@ struct OperationRunner {
                 configuration.userContentController = userContentController
                 return configuration
             }())
-        
-        // If the following the script resource fails to load, then
-        // didReceiveMessage will never be called, not even with an Error.
-        webView.loadHTMLString(
-            "<script src=\"https://jumboassetsv1.blob.core.windows.net/publicfiles/interview_bundle.js\"></script>",
-            baseURL: nil)
+                
+        webView.evaluateJavaScript(script) { [webView] _, error in
+            if let error = error {
+                didReceiveMessage(.failure(error))
+            } else {
+                webView.evaluateJavaScript(
+                    operationIDs
+                        .map { "startOperation(\"\($0.escapingQuotes)\")" }
+                        .joined(separator: ";"),
+                    completionHandler: { _, error in
+                        if let error = error {
+                            didReceiveMessage(.failure(error))
+                        }
+                    })
+            }
+        }
     }
 }
 
