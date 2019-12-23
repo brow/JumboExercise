@@ -9,7 +9,7 @@
 import UIKit
 
 class ProgressCell: UITableViewCell {
-    static let reuseIdentifier = "Cell"
+    static let reuseIdentifier = "ProgressCell"
     
     private let progressView: UIProgressView
     
