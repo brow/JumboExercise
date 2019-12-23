@@ -11,9 +11,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    private let operationRunner = OperationRunner(
-        operationIDs: ["a", "b"],
-        didReceiveMessage: { print($0) })
+    private var operationRunner: OperationRunner?
     
     // MARK: UIApplicationDelegate
     
@@ -24,8 +22,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
         -> Bool
     {
+        let operationIDs = ["a", "b"]
+        var state = State(operationIDs: operationIDs)
+        
+        let viewController = ViewController(
+        )
+        
+        operationRunner = OperationRunner(
+            operationIDs: operationIDs,
+            didReceiveMessage: { message in
+                switch message {
+                case .success(let message):
+                    state.updateWith(message)
+                    print(state.orderedOperations)
+                case .failure(let error):
+                    // TODO: A message serialization issue could cause errors
+                    // to pile up rapidly. A UI that handles that gracefully
+                    // would be better than alert views.
+                    viewController.present(
+                        UIAlertController(
+                            title: "Error",
+                            message: error.localizedDescription,
+                            preferredStyle: .alert),
+                        animated: true,
+                        completion: nil)
+                    
+                }
+            })
+        
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = ViewController()
+        window.rootViewController = viewController
         window.makeKeyAndVisible()
         self.window = window
         
