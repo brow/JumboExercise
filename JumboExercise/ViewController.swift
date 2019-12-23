@@ -46,27 +46,21 @@ class ViewController: UITableViewController {
         -> UITableViewCell
     {
         let model = rows[indexPath.row]
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: ProgressCell.reuseIdentifier,
-            for: indexPath)
+        let cell = tableView
+            .dequeueReusableCell(
+                withIdentifier: ProgressCell.reuseIdentifier,
+                for: indexPath)
+            as! ProgressCell
         
         cell.selectionStyle = .none
         cell.textLabel?.text = model.0
         
         switch model.1 {
         case .inProgress(let progress):
-            let progressView = cell.accessoryView as? UIProgressView
-                ?? UIProgressView(
-                    frame: CGRect(origin: .zero, size: CGSize(
-                        width: 100,
-                        // Acutual height is determined by `.progressViewStyle`.
-                        height: 0)))
-            progressView.progress = Float(progress / 100)
-            
-            cell.accessoryView = progressView
+            cell.setProgress(Float(progress / 100))
             cell.detailTextLabel?.text = nil
         case .completed(let state):
-            cell.accessoryView = nil
+            cell.setProgress(nil)
             cell.detailTextLabel?.text = state
         }
         
@@ -79,8 +73,29 @@ private let cellReuseIdentifier = "Cell"
 class ProgressCell: UITableViewCell {
     static let reuseIdentifier = "Cell"
     
+    private let progressView: UIProgressView
+    
+    func setProgress(_ progress: Float?) {
+        if let progress = progress {
+            accessoryView = progressView
+            progressView.progress = progress
+        } else {
+            accessoryView = nil
+        }
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        progressView = UIProgressView(
+            frame: CGRect(
+                origin: .zero,
+                size: CGSize(
+                    width: 100,
+                    // Acutual height is determined by `.progressViewStyle`.
+                    height: 0)))
+        
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
+        
+        accessoryView = progressView
     }
     
     required init?(coder: NSCoder) {
