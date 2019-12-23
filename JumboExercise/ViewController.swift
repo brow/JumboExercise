@@ -9,11 +9,11 @@
 import UIKit
 
 class ViewController: UITableViewController {
-    var model: State {
+    var model: Model {
         didSet { tableView.reloadData() }
     }
     
-    init(model: State) {
+    init(model: Model) {
         self.model = model
         
         super.init(style: .plain)

@@ -1,12 +1,12 @@
 //
-//  State.swift
+//  Model.swift
 //  JumboExercise
 //
 //  Created by Tom Brow on 12/23/19.
 //  Copyright © 2019 Tom Brow. All rights reserved.
 //
 
-struct State {
+struct Model {
     private let orderedOperationIDs: [Operation.ID]
     private var operations: [Operation.ID: Operation.State]
     

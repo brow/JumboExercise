@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EA1F6FA923B11C300041D823 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F6FA823B11C300041D823 /* State.swift */; };
+		EA1F6FA923B11C300041D823 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F6FA823B11C300041D823 /* Model.swift */; };
 		EA1F6FAB23B138F80041D823 /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F6FAA23B138F80041D823 /* ProgressCell.swift */; };
 		EA1F6FB323B185E00041D823 /* StringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F6FB223B185E00041D823 /* StringExtensionsTests.swift */; };
 		EA1F6FBB23B1861B0041D823 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F6FBA23B1861B0041D823 /* StringExtensions.swift */; };
@@ -31,7 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EA1F6FA823B11C300041D823 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		EA1F6FA823B11C300041D823 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		EA1F6FAA23B138F80041D823 /* ProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		EA1F6FB023B185E00041D823 /* JumboExerciseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JumboExerciseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1F6FB223B185E00041D823 /* StringExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsTests.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 				EA5F781023AD9662001E842A /* Operation.swift */,
 				EA7FED5B23B0277800018D0F /* OperationRunner.swift */,
 				EA1F6FAA23B138F80041D823 /* ProgressCell.swift */,
-				EA1F6FA823B11C300041D823 /* State.swift */,
+				EA1F6FA823B11C300041D823 /* Model.swift */,
 				EA1F6FBA23B1861B0041D823 /* StringExtensions.swift */,
 				EA5F77F823AD6111001E842A /* ViewController.swift */,
 				EA5F77FF23AD6112001E842A /* LaunchScreen.storyboard */,
@@ -225,7 +225,7 @@
 				EA5F780B23AD91BD001E842A /* MessageDecodable.swift in Sources */,
 				EA5F781123AD9662001E842A /* Operation.swift in Sources */,
 				EA5F77F523AD6111001E842A /* AppDelegate.swift in Sources */,
-				EA1F6FA923B11C300041D823 /* State.swift in Sources */,
+				EA1F6FA923B11C300041D823 /* Model.swift in Sources */,
 				EA7FED5C23B0277800018D0F /* OperationRunner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
