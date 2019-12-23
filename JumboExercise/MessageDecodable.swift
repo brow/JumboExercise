@@ -6,24 +6,6 @@
 //  Copyright © 2019 Tom Brow. All rights reserved.
 //
 
-import WebKit
-
-extension Message {
-    init(_ message: WKScriptMessage) throws {
-        guard
-            let string = message.body as? String,
-            let data = string.data(using: .utf8)
-            else {
-                struct BodyFormatError: Error {}
-                throw BodyFormatError()
-            }
-        
-        self = try decoder.decode(Message.self, from: data)
-    }
-}
-
-private let decoder = JSONDecoder()
-
 extension Message: Decodable {
     enum CodingKeys: CodingKey { case id, message, progress, state }
     
