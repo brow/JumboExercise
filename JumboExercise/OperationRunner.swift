@@ -34,7 +34,7 @@ class OperationRunner {
                 return
             }
             let startOperationsScript = operationIDs
-                .map { "startOperation(\"\($0.escapingDoubleQuotes)\")" }
+                .map { "startOperation(\"\($0.escapingForDoubleQuoting)\")" }
                 .joined(separator: ";")
             webView.evaluateJavaScript(
                 startOperationsScript,
@@ -49,8 +49,9 @@ class OperationRunner {
 }
 
 private extension String {
-    var escapingDoubleQuotes: String {
-        return replacingOccurrences(of: "\"", with: "\\\"")
+    var escapingForDoubleQuoting: String {
+        return replacingOccurrences(of: "\\", with: "\\\\")
+            .replacingOccurrences(of: "\"", with: "\\\"")
     }
 }
 
