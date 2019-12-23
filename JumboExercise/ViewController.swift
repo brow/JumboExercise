@@ -17,12 +17,17 @@ class ViewController: UITableViewController {
         super.init(style: .plain)
         
         tableView.register(
-            UITableViewCell.self,
-            forCellReuseIdentifier: cellReuseIdentifier)
+            ProgressCell.self,
+            forCellReuseIdentifier: ProgressCell.reuseIdentifier)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func updateRowsTo(_ rows: [(Operation.ID, Operation.State)]) {
+        self.rows = rows
+        tableView.reloadData()
     }
     
     // MARK: UITableViewDataSource
@@ -40,12 +45,45 @@ class ViewController: UITableViewController {
         cellForRowAt indexPath: IndexPath)
         -> UITableViewCell
     {
+        let model = rows[indexPath.row]
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: cellReuseIdentifier,
+            withIdentifier: ProgressCell.reuseIdentifier,
             for: indexPath)
-        cell.textLabel?.text = rows[indexPath.row].0
+        
+        cell.selectionStyle = .none
+        cell.textLabel?.text = model.0
+        
+        switch model.1 {
+        case .inProgress(let progress):
+            let progressView = cell.accessoryView as? UIProgressView
+                ?? UIProgressView(
+                    frame: CGRect(origin: .zero, size: CGSize(
+                        width: 100,
+                        // Acutual height is determined by `.progressViewStyle`.
+                        height: 0)))
+            progressView.progress = Float(progress / 100)
+            
+            cell.accessoryView = progressView
+            cell.detailTextLabel?.text = nil
+        case .completed(let state):
+            cell.accessoryView = nil
+            cell.detailTextLabel?.text = state
+        }
+        
         return cell
     }
 }
 
 private let cellReuseIdentifier = "Cell"
+
+class ProgressCell: UITableViewCell {
+    static let reuseIdentifier = "Cell"
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
