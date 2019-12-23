@@ -34,6 +34,9 @@ struct OperationRunner {
                 configuration.userContentController = userContentController
                 return configuration
             }())
+        
+        // If the following the script resource fails to load, then
+        // didReceiveMessage will never be called, not even with an Error.
         webView.loadHTMLString(
             "<script src=\"https://jumboassetsv1.blob.core.windows.net/publicfiles/interview_bundle.js\"></script>",
             baseURL: nil)
