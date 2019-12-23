@@ -14,30 +14,17 @@ struct OperationRunner {
     init(
         script: String,
         operationIDs: [Operation.ID],
-        didReceiveMessage: @escaping (Result<Message, Error>) -> ())
+        handleEvent: @escaping (Result<Message, Error>) -> ())
     {
         webView = WKWebView(
             frame: .zero,
-            configuration: {
-                let userContentController = WKUserContentController()
-                userContentController.add(
-                    ScriptMessageHandler(didReceiveMessage: didReceiveMessage),
-                    name: "jumbo")
-                userContentController.addUserScript(WKUserScript(
-                    source: operationIDs
-                        .map { "startOperation(\"\($0.escapingQuotes)\")" }
-                        .joined(separator: ";"),
-                    injectionTime: .atDocumentEnd,
-                    forMainFrameOnly: true))
-                
-                let configuration = WKWebViewConfiguration()
-                configuration.userContentController = userContentController
-                return configuration
-            }())
+            configuration: WKWebViewConfiguration(
+                handleEvent: handleEvent,
+                handlerName: "jumbo"))
                 
         webView.evaluateJavaScript(script) { [webView] _, error in
             if let error = error {
-                didReceiveMessage(.failure(error))
+                handleEvent(.failure(error))
             } else {
                 webView.evaluateJavaScript(
                     operationIDs
@@ -45,7 +32,7 @@ struct OperationRunner {
                         .joined(separator: ";"),
                     completionHandler: { _, error in
                         if let error = error {
-                            didReceiveMessage(.failure(error))
+                            handleEvent(.failure(error))
                         }
                     })
             }
@@ -59,21 +46,32 @@ private extension String {
     }
 }
 
+private extension WKWebViewConfiguration {
+    convenience init(
+        handleEvent: @escaping (Result<Message, Error>) -> (),
+        handlerName: String) {
+        self.init()
+        userContentController.add(
+            ScriptMessageHandler(handleEvent: handleEvent),
+            name: handlerName)
+    }
+}
+
 private class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
-    private let didReceiveMessage: (Result<Message, Error>) -> ()
+    private let handleEvent: (Result<Message, Error>) -> ()
     private let decoder = JSONDecoder()
     
     private struct BodyFormatError: Error {}
     
-    init(didReceiveMessage: @escaping (Result<Message, Error>) -> ()) {
-        self.didReceiveMessage = didReceiveMessage
+    init(handleEvent: @escaping (Result<Message, Error>) -> ()) {
+        self.handleEvent = handleEvent
     }
     
     func userContentController(
         _ userContentController: WKUserContentController,
         didReceive message: WKScriptMessage)
     {
-        didReceiveMessage({
+        handleEvent({
             do {
                 guard
                     let string = message.body as? String,

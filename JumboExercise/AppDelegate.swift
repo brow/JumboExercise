@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         self?.operationRunner = OperationRunner(
                             script: bodyString,
                             operationIDs: operationIDs,
-                            didReceiveMessage: didReceiveMessage)
+                            handleEvent: didReceiveMessage)
                     } catch {
                         didReceiveMessage(.failure(error))
                     }
