@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
         -> Bool
     {
-        let operationIDs = ["a", "b"]
+        let operationIDs = ["Facebook", "Google Maps", "Twitter", "Dark Web"]
         var state = State(operationIDs: operationIDs)
         
         let viewController = ViewController(rows: state.orderedOperations)
