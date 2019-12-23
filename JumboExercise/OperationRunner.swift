@@ -47,6 +47,8 @@ private class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
     private let didReceiveMessage: (Result<Message, Error>) -> ()
     private let decoder = JSONDecoder()
     
+    private struct BodyFormatError: Error {}
+    
     init(didReceiveMessage: @escaping (Result<Message, Error>) -> ()) {
         self.didReceiveMessage = didReceiveMessage
     }
@@ -60,11 +62,7 @@ private class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
                 guard
                     let string = message.body as? String,
                     let data = string.data(using: .utf8)
-                    else {
-                        struct BodyFormatError: Error {}
-                        throw BodyFormatError()
-                    }
-               
+                    else { throw BodyFormatError() }
                 return .success(
                     try decoder.decode(Message.self, from: data))
             } catch {
