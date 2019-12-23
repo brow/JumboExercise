@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             switch message {
             case .success(let message):
                 state.updateWith(message)
-                viewController.updateRowsTo(state.orderedOperations)
+                viewController.rows = state.orderedOperations
             case .failure(let error):
                 // TODO: A message serialization issue could cause errors
                 // to pile up rapidly. A UI that handles that gracefully

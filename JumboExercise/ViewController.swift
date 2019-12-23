@@ -9,7 +9,9 @@
 import UIKit
 
 class ViewController: UITableViewController {
-    private var rows: [(Operation.ID, Operation.State)]
+    var rows: [(Operation.ID, Operation.State)] {
+        didSet { tableView.reloadData() }
+    }
     
     init(rows: [(Operation.ID, Operation.State)]) {
         self.rows = rows
@@ -23,11 +25,6 @@ class ViewController: UITableViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func updateRowsTo(_ rows: [(Operation.ID, Operation.State)]) {
-        self.rows = rows
-        tableView.reloadData()
     }
     
     // MARK: UITableViewDataSource
