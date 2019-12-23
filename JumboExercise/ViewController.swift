@@ -9,12 +9,12 @@
 import UIKit
 
 class ViewController: UITableViewController {
-    var rows: State {
+    var model: State {
         didSet { tableView.reloadData() }
     }
     
-    init(rows: State) {
-        self.rows = rows
+    init(model: State) {
+        self.model = model
         
         super.init(style: .plain)
         
@@ -34,7 +34,7 @@ class ViewController: UITableViewController {
         numberOfRowsInSection section: Int)
         -> Int
     {
-        return rows.count
+        return model.count
     }
     
     override func tableView(
@@ -42,7 +42,7 @@ class ViewController: UITableViewController {
         cellForRowAt indexPath: IndexPath)
         -> UITableViewCell
     {
-        let model = rows.operationAtIndex(indexPath.row)
+        let cellModel = model.operationAtIndex(indexPath.row)
         let cell = tableView
             .dequeueReusableCell(
                 withIdentifier: ProgressCell.reuseIdentifier,
@@ -50,9 +50,9 @@ class ViewController: UITableViewController {
             as! ProgressCell
         
         cell.selectionStyle = .none
-        cell.textLabel?.text = model.0
+        cell.textLabel?.text = cellModel.0
         
-        switch model.1 {
+        switch cellModel.1 {
         case .inProgress(let progress):
             cell.setProgress(Float(progress / 100))
             cell.detailTextLabel?.text = nil

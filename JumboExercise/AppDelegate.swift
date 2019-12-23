@@ -24,13 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         let operationIDs = ["Facebook", "Google Maps", "Twitter", "\"Dark Web\""]
         var state = State(operationIDs: operationIDs)
-        let viewController = ViewController(rows: state)
+        let viewController = ViewController(model: state)
         
         func handleEvent(_ message: Result<Message, Error>) {
             switch message {
             case .success(let message):
                 state.updateWith(message)
-                viewController.rows = state
+                viewController.model = state
             case .failure(let error):
                 // TODO: A message serialization issue could cause errors
                 // to pile up rapidly. A UI that handles that gracefully
