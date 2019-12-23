@@ -8,34 +8,43 @@
 
 import WebKit
 
-struct OperationRunner {
-    private let webView = WKWebView()
+class OperationRunner {
+    private var webView: WKWebView?
     
     init(
         runnerScript: String,
         operationIDs: [Operation.ID],
         handleEvent: @escaping (Result<Message, Error>) -> ())
     {
+        let handleScriptError = { [weak self] (error: Error) in
+            handleEvent(.failure(error))
+            
+            // An error in the script means no operations will be started or
+            // messages received, so we can discard the web view.
+            self?.webView = nil
+        }
+        
+        let webView = WKWebView()
         webView.configuration.userContentController.add(
             ScriptMessageHandler(handleEvent: handleEvent),
             name: "jumbo")
-        
-        webView.evaluateJavaScript(runnerScript) { [webView] _, error in
+        webView.evaluateJavaScript(runnerScript) { _, error in
             if let error = error {
-                handleEvent(.failure(error))
-            } else {
-                let startOperationsScript = operationIDs
-                    .map { "startOperation(\"\($0.escapingQuotes)\")" }
-                    .joined(separator: ";")
-                webView.evaluateJavaScript(
-                    startOperationsScript,
-                    completionHandler: { _, error in
-                        if let error = error {
-                            handleEvent(.failure(error))
-                        }
-                    })
+                handleScriptError(error)
+                return
             }
+            let startOperationsScript = operationIDs
+                .map { "startOperation(\"\($0.escapingQuotes)\")" }
+                .joined(separator: ";")
+            webView.evaluateJavaScript(
+                startOperationsScript,
+                completionHandler: { _, error in
+                    if let error = error {
+                        handleScriptError(error)
+                    }
+                })
         }
+        self.webView = webView
     }
 }
 
