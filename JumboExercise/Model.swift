@@ -27,8 +27,8 @@ struct Model {
         return orderedOperationIDs.count
     }
     
-    func operationAtIndex(_ index: Int) -> (Operation.ID, Operation.State) {
+    func operationAtIndex(_ index: Int) -> Operation {
         let id = orderedOperationIDs[index]
-        return (id, operations[id]!)
+        return Operation(id: id, state: operations[id]!)
     }
 }

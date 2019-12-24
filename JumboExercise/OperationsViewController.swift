@@ -50,9 +50,9 @@ class OperationsViewController: UITableViewController {
             as! ProgressCell
         
         cell.selectionStyle = .none
-        cell.textLabel?.text = cellModel.0
+        cell.textLabel?.text = cellModel.id
         
-        switch cellModel.1 {
+        switch cellModel.state {
         case .inProgress(let progress):
             cell.setProgress(Float(progress / 100))
             cell.detailTextLabel?.text = nil

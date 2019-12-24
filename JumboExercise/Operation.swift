@@ -16,4 +16,7 @@ struct Operation {
         // possible values is not documented.
         case completed(state: String)
     }
+    
+    let id: ID
+    let state: State
 }
