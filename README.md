@@ -6,11 +6,11 @@ This iOS app implements the "iOS Running Javascript Operations" exercise. It use
 
 The app assumes that a script is available at [the URL](https://jumboassetsv1.blob.core.windows.net/publicfiles/interview_bundle.js) given on [the exercise page](https://join.jumboprivacy.com/20191218ios.html) and has the behavior documented on that page.
 
-However, the app aims to gracefully handle and expose to the usr any error that occurs in downloading or running the script or deserializing its messages.
+However, the app bubbles up any error that occurs in downloading or running the script or deserializing its messages.
 
-The app does not rely on behavior that is documented inside the script itself or is inferred from the script's source. For example, it does not assume that a `progress` message will never be received after the `completed` message for a given operation, or that a message will never be received concerning an operation that was not started. 
+The app does not rely on behavior that is documented in the script itself. For example, it does not assume that a `progress` message will never be received after a `completed` message for a given operation, that progress strictly increases, or that a message will never be received concerning an operation that was not started. 
 
-As a result, the app cannot know when no more messages will be sent, and it never terminates the script or disposes of the web view.
+As a result, the app cannot know when the final message has been received, and it never terminates the script or disposes of the web view.
 
 ## Testing
 
