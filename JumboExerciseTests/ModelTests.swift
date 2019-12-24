@@ -66,5 +66,13 @@ class ModelTests: XCTestCase {
             model.cellModelAtIndex(0).progress,
             0.3,
             "The model does not enforce that progress strictly increases or that `completed` operations never go back to `inProgress`.")
+        
+        model.updateWith(Message(
+            id: operationID,
+            content: .inProgress(progress: -1000)))
+        XCTAssertEqual(
+            model.cellModelAtIndex(0).progress,
+            -10,
+            "The model does not enforce that `progress` is in the range [0, 1].")
     }
 }
