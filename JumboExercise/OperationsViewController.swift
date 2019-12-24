@@ -52,5 +52,3 @@ class OperationsViewController: UITableViewController {
         return cell
     }
 }
-
-private let cellReuseIdentifier = "Cell"
