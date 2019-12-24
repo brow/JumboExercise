@@ -18,6 +18,7 @@
 		EA5F780B23AD91BD001E842A /* MessageDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F780A23AD91BD001E842A /* MessageDecodable.swift */; };
 		EA5F781123AD9662001E842A /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F781023AD9662001E842A /* Operation.swift */; };
 		EA7FED5C23B0277800018D0F /* OperationRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FED5B23B0277800018D0F /* OperationRunner.swift */; };
+		EAE3D2D023B18E9300F16CC4 /* OperationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE3D2CF23B18E9300F16CC4 /* OperationsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		EA5F780A23AD91BD001E842A /* MessageDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDecodable.swift; sourceTree = "<group>"; };
 		EA5F781023AD9662001E842A /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		EA7FED5B23B0277800018D0F /* OperationRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationRunner.swift; sourceTree = "<group>"; };
+		EAE3D2CF23B18E9300F16CC4 /* OperationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				EA1F6FA823B11C300041D823 /* Model.swift */,
 				EA1F6FBA23B1861B0041D823 /* StringExtensions.swift */,
 				EA5F77F823AD6111001E842A /* OperationsViewController.swift */,
+				EAE3D2CF23B18E9300F16CC4 /* OperationsViewModel.swift */,
 				EA5F77FF23AD6112001E842A /* LaunchScreen.storyboard */,
 			);
 			path = JumboExercise;
@@ -224,6 +227,7 @@
 				EA1F6FBB23B1861B0041D823 /* StringExtensions.swift in Sources */,
 				EA5F780B23AD91BD001E842A /* MessageDecodable.swift in Sources */,
 				EA5F781123AD9662001E842A /* Operation.swift in Sources */,
+				EAE3D2D023B18E9300F16CC4 /* OperationsViewModel.swift in Sources */,
 				EA5F77F523AD6111001E842A /* AppDelegate.swift in Sources */,
 				EA1F6FA923B11C300041D823 /* Model.swift in Sources */,
 				EA7FED5C23B0277800018D0F /* OperationRunner.swift in Sources */,

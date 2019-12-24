@@ -33,7 +33,7 @@ class ProgressCell: UITableViewCell {
         
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
         
-        accessoryView = progressView
+        selectionStyle = .none
     }
     
     required init?(coder: NSCoder) {

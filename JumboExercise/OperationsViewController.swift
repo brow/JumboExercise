@@ -9,11 +9,11 @@
 import UIKit
 
 class OperationsViewController: UITableViewController {
-    var model: Model {
+    var model: OperationsViewModel {
         didSet { tableView.reloadData() }
     }
     
-    init(model: Model) {
+    init(model: OperationsViewModel) {
         self.model = model
         
         super.init(style: .plain)
@@ -42,25 +42,17 @@ class OperationsViewController: UITableViewController {
         cellForRowAt indexPath: IndexPath)
         -> UITableViewCell
     {
-        let cellModel = model.operationAtIndex(indexPath.row)
+        let cellModel = model.cellModelAtIndex(indexPath.row)
         let cell = tableView
             .dequeueReusableCell(
                 withIdentifier: ProgressCell.reuseIdentifier,
                 for: indexPath)
             as! ProgressCell
         
-        cell.selectionStyle = .none
-        cell.textLabel?.text = cellModel.id
-        
-        switch cellModel.state {
-        case .inProgress(let progress):
-            cell.setProgress(Float(progress / 100))
-            cell.detailTextLabel?.text = nil
-        case .completed(let state):
-            cell.setProgress(nil)
-            cell.detailTextLabel?.text = state
-        }
-        
+        cell.textLabel?.text = cellModel.text
+        cell.detailTextLabel?.text = cellModel.detailText
+        cell.setProgress(cellModel.progress)
+
         return cell
     }
 }
