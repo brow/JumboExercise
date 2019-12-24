@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         let operationIDs = ["Facebook", "Google Maps", "Twitter", "\"Dark Web\""]
         var model = Model(operationIDs: operationIDs)
-        let viewController = ViewController(model: model)
+        let viewController = OperationsViewController(model: model)
         
         func handleEvent(_ message: Result<Message, Error>) {
             switch message {

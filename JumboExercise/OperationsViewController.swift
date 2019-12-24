@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  OperationsViewController.swift
 //  JumboExercise
 //
 //  Created by Tom Brow on 12/20/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class OperationsViewController: UITableViewController {
     var model: Model {
         didSet { tableView.reloadData() }
     }
