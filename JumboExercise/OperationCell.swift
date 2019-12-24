@@ -13,8 +13,11 @@ class OperationCell: UITableViewCell {
     
     private let progressView: UIProgressView
     
-    func setProgress(_ progress: Float?) {
-        if let progress = progress {
+    func setModel(_ model: OperationsViewModel.CellModel) {
+        textLabel?.text = model.text
+        detailTextLabel?.text = model.detailText
+        
+        if let progress = model.progress {
             accessoryView = progressView
             progressView.progress = progress
         } else {

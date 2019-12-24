@@ -42,17 +42,13 @@ class OperationsViewController: UITableViewController {
         cellForRowAt indexPath: IndexPath)
         -> UITableViewCell
     {
-        let cellModel = model.cellModelAtIndex(indexPath.row)
         let cell = tableView
             .dequeueReusableCell(
                 withIdentifier: OperationCell.reuseIdentifier,
                 for: indexPath)
             as! OperationCell
-        
-        cell.textLabel?.text = cellModel.text
-        cell.detailTextLabel?.text = cellModel.detailText
-        cell.setProgress(cellModel.progress)
-
+        cell.setModel(
+            model.cellModelAtIndex(indexPath.row))
         return cell
     }
 }
