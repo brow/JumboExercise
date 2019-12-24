@@ -8,11 +8,25 @@
 
 import UIKit
 
+/// A view controller that displays operations in progress.
 class OperationsViewController: UITableViewController {
+    
+    /// The view model, in the sense of the MVVM architecture.
     var model: OperationsViewModel {
-        didSet { tableView.reloadData() }
+        didSet {
+            // Individual table cells are not reactive to changes in the data,
+            // so we must reload the table view when any data changes.
+            //
+            // Animations are not necessary because `model.count` is expected
+            // never to change.
+            tableView.reloadData()
+        }
     }
     
+    /// Initialize a view controller.
+    ///
+    /// - Parameters:
+    ///   - model: The initial view model.
     init(model: OperationsViewModel) {
         self.model = model
         

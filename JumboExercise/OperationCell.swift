@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// The visual representation of an operation in progress.
 class OperationCell: UITableViewCell {
     static let reuseIdentifier = "ProgressCell"
     

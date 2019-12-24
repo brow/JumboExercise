@@ -10,8 +10,6 @@ extension String {
     /// An escaped version of the string suitable for interpolating between
     /// double quotes (") in a string containing JavaScript while preserving
     /// validity of the syntax.
-    ///
-    /// - Complexity: O(n)
     var escapingForDoubleQuoting: String {
         return replacingOccurrences(of: "\\", with: "\\\\")
             .replacingOccurrences(of: "\"", with: "\\\"")
