@@ -1,5 +1,5 @@
 //
-//  ProgressCell.swift
+//  OperationCell.swift
 //  JumboExercise
 //
 //  Created by Tom Brow on 12/23/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProgressCell: UITableViewCell {
+class OperationCell: UITableViewCell {
     static let reuseIdentifier = "ProgressCell"
     
     private let progressView: UIProgressView

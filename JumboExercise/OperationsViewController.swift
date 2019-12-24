@@ -19,8 +19,8 @@ class OperationsViewController: UITableViewController {
         super.init(style: .plain)
         
         tableView.register(
-            ProgressCell.self,
-            forCellReuseIdentifier: ProgressCell.reuseIdentifier)
+            OperationCell.self,
+            forCellReuseIdentifier: OperationCell.reuseIdentifier)
     }
     
     required init?(coder: NSCoder) {
@@ -45,9 +45,9 @@ class OperationsViewController: UITableViewController {
         let cellModel = model.cellModelAtIndex(indexPath.row)
         let cell = tableView
             .dequeueReusableCell(
-                withIdentifier: ProgressCell.reuseIdentifier,
+                withIdentifier: OperationCell.reuseIdentifier,
                 for: indexPath)
-            as! ProgressCell
+            as! OperationCell
         
         cell.textLabel?.text = cellModel.text
         cell.detailTextLabel?.text = cellModel.detailText
