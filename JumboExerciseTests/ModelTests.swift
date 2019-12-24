@@ -11,8 +11,17 @@ import XCTest
 
 class ModelTests: XCTestCase {
     func testEmpty() {
-        let model = Model(operationIDs: [])
+        var model = Model(operationIDs: [])
         XCTAssertEqual(model.count, 0)
+        
+        let newOperationID = "Instagram"
+        model.updateWith(Message(
+            id: newOperationID,
+            content: .inProgress(progress: 50)))
+        XCTAssertEqual(
+            model.count,
+            0,
+            "Receiving a message concerning an unknown operation has no visible seffect.")
     }
     
     func testProgressAndCompletion() {
