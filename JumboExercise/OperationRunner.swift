@@ -58,6 +58,8 @@ private class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
         self.handleEvent = handleEvent
     }
     
+    // MARK: WKScriptMessageHandler
+    
     func userContentController(
         _ userContentController: WKUserContentController,
         didReceive message: WKScriptMessage)

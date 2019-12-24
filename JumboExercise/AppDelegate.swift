@@ -78,6 +78,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 private extension UIAlertController {
+    
+    /// Initialize a single-button alert that shows information about an error.
+    ///
+    /// - Parameters:
+    ///   - error: The error to display.
+    ///
+    /// - Complexity: O(*n*), where *n* is the length of the sequence.
     convenience init(error: Error) {
         self.init(
             title: "Error",

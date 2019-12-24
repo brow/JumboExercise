@@ -28,6 +28,8 @@ extension Message: Decodable {
                         String.self,
                         forKey: .state))
             default:
+                // The documentation specifies that `message` can only be either
+                //  `progress` or `completed`.
                 throw DecodingError.dataCorruptedError(
                     forKey: .message,
                     in: container,
